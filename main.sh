@@ -1,7 +1,7 @@
 #! /usr/bin/bash
 
-mkdir -p $HOME/DB
-cd $HOME/DB/
+mkdir -p ./DB
+cd ./DB/
 
 echo Hello SQL 
 export PS3="SQLProj>>> "
@@ -11,7 +11,19 @@ function check_input_string {
 
     input_string="$1"
 
-    pattern="^[^0-9\s\\!@#\$%^&*()_+={}\[\]:;\"'<>?,.\\/]+$"
+    pattern="^[^0-9\s\/><\?*\#'\@\$\%\^\&\(\)\.]+$"
+
+    if [ -z "$input_name" ]; then
+        echo "Name should not be null."
+    elif [[ $input_name =~ ^(\.|\.\.) ]]; then
+        echo "Name should not start with '.' or '..'."
+    elif [[ $input_name =~ ^[0-9] ]]; then
+        echo "Name should not start with a number."
+    elif [[ ! $input_name =~ $pattern ]]; then
+        echo "Name contains invalid characters or spaces."
+    else
+        echo "Valid name: $input_name"
+    fi
 
     if [[ $input_string =~ $pattern ]]; then
         return 1 
@@ -38,13 +50,19 @@ function create_db {
         if [[ -e $name ]] ; then
                 echo ERROR: DB Exist!
         else
-                check_input_string $name
-                if [[ $? -eq 1 ]]: then
-                        mkdir $name 
-                else 
-                        echo "Invalid input string: $name"
-                fi
+                pattern="^[^0-9\s\/><\?*\#'\@\$\%\^\&\(\)\.]+$"
 
+                if [ -z $name ]; then
+                        echo "Name should not be null."
+                elif [[ $name =~ ^(\.|\.\.) ]]; then
+                        echo "Name should not start with '.' or '..'."
+                elif [[ $name =~ ^[0-9] ]]; then
+                        echo "Name should not start with a number."
+                elif [[ ! $name =~ $pattern ]]; then
+                        echo "Name contains invalid characters or spaces."
+                else
+                        mkdir $name 
+                fi
         fi
 }
 
