@@ -7,12 +7,26 @@ echo Hello SQL
 export PS3="SQLProj>>> "
 
 
+function check_input_string {
+
+    input_string="$1"
+
+    pattern="^[^0-9\s\\!@#\$%^&*()_+={}\[\]:;\"'<>?,.\\/]+$"
+
+    if [[ $input_string =~ $pattern ]]; then
+        return 1 
+    else
+        return 0 
+    fi
+}
+
+
 function connect_db {
 	read -p "Enter DB Name: " name
 	if [[ -d $name && -e $name ]] ; then
-		cd ./$name
-		pwd
-		#menu tables file --> export PS3="$name> "
+                cd ./$name
+                . ./tableMenu.sh
+                #menu tables file --> export PS3="$name> "
 	else
 		echo ERROR: DB Not Found! 
 	fi
@@ -24,7 +38,13 @@ function create_db {
         if [[ -e $name ]] ; then
                 echo ERROR: DB Exist!
         else
-                mkdir $name 
+                check_input_string $name
+                if [[ $? -eq 1 ]]: then
+                        mkdir $name 
+                else 
+                        echo "Invalid input string: $name"
+                fi
+
         fi
 }
 
@@ -48,6 +68,7 @@ function drop_db {
                 echo ERROR: DB Not Found
         fi
 }
+
 
 
 select var in "List DBs" "Connect DB" "Create DB" "Rename DB" "Drop DB"
