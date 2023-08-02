@@ -6,33 +6,6 @@ cd ./DB/
 echo Hello SQL 
 export PS3="SQLProj>>> "
 
-
-function check_input_string {
-
-    input_string="$1"
-
-    pattern="^[^0-9\s\/><\?*\#'\@\$\%\^\&\(\)\.]+$"
-
-    if [ -z "$input_name" ]; then
-        echo "Name should not be null."
-    elif [[ $input_name =~ ^(\.|\.\.) ]]; then
-        echo "Name should not start with '.' or '..'."
-    elif [[ $input_name =~ ^[0-9] ]]; then
-        echo "Name should not start with a number."
-    elif [[ ! $input_name =~ $pattern ]]; then
-        echo "Name contains invalid characters or spaces."
-    else
-        echo "Valid name: $input_name"
-    fi
-
-    if [[ $input_string =~ $pattern ]]; then
-        return 1 
-    else
-        return 0 
-    fi
-}
-
-
 function connect_db {
 	read -p "Enter DB Name: " name
 	if [[ -d $name && -e $name ]] ; then
