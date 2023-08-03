@@ -3,7 +3,7 @@
 dbname=$1
 echo "Welcome to " $dbname "Database"
 export PS3="$dbname> "
-
+cd ../../
 select var in "Create Table" "List Tables" "Drop Table" "Insert into Table" "Select From Table" "Delete From Table" "Update Table"
 do
 
