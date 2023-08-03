@@ -23,7 +23,7 @@ function promptForPK
             ;;
         2)  return 1
             ;;
-        *) echo "Invalidd Option"    
+        *) echo "Invalid Option"    
         esac
         
     done
