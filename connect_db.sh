@@ -2,11 +2,13 @@
 
 read -p "Enter DB Name: " name
 
-if [[ -d $name && -e $name ]] ; then
+if [[ -d "./DB/$name" && -e "./DB/$name" ]] ; then
 
             cd ./DB/$name
-            . ./tableMenu.sh
-            #menu tables file --> export PS3="$name> "
+            clear
+            ../../tablemenu.sh $name
 else
     echo ERROR: DB Not Found! 
 fi
+
+
