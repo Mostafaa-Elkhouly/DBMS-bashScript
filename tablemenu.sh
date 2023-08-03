@@ -10,6 +10,7 @@ do
     case $REPLY in	
     1)
         #create_table
+        ./create_table.sh $1
         ;;
     2)
         #list_tables
