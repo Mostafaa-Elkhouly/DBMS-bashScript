@@ -1,4 +1,5 @@
-#!/bin/bash
+#! /usr/bin/bash
+
 read -p "Enter Table Name To Be Deleted: " name
 if [ -f $name ]
 then 
