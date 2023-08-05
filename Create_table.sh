@@ -92,8 +92,11 @@ function createTable
             fi  
         fi
 
-        
-        columnSchema+="$colName:$colType|"
+        if [[ counter -eq columnsNumber-1 ]]; then
+            columnSchema+="$colName:$colType"
+        else    
+            columnSchema+="$colName:$colType|"
+        fi
         
         ((counter++))
     done

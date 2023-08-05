@@ -18,7 +18,7 @@ do
         ./drop_table.sh $dbname
         ;;
     4)
-        #insert_into_table
+        ./insert_table.sh $dbname
         ;;
     5)
         #select_from_table
