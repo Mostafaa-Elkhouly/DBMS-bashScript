@@ -1,5 +1,8 @@
 #! /usr/bin/bash
 
+dbname=$1
+cd "./DB/$dbname/"
+
 function isInteger
 {   
 
@@ -45,11 +48,9 @@ function isValidString
 
 function createTable
 {   
-    dbName=$1
-    echo $dbName
     read -p "Enter Table Name--> " tableName
   
-    if [ -f "/DB/$dbName/$tableName" ]
+    if [ -f $tableName ]
     then 
         echo "Error! Table Name Already Exsits!"
         return 1
@@ -71,7 +72,7 @@ function createTable
         currCol=$(( counter+1 ))
         
         read -p "Enter Column [$currCol] Name--> " colName
-        echo "Enter Column [$currCol] Type--> "
+        echo "Choose The Column [$currCol] Type: "
         select type in "int" "string"
         do
             case $REPLY in 
@@ -98,7 +99,7 @@ function createTable
     done
 
      
-    printf $columnSchema >> "DB/$dbName/$tableName"
+    echo $columnSchema >> "./$tableName"
     if [[ $? == 0 ]]
     then
         echo "Table $tableName was created successfully!"
@@ -107,5 +108,4 @@ function createTable
     fi
 }
 
-# $1 is the Database Name
-createTable $1
+createTable

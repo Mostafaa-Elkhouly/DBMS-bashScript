@@ -3,20 +3,21 @@
 dbname=$1
 echo "Welcome to " $dbname "Database"
 export PS3="$dbname> "
-cd ../../
+
 select var in "Create Table" "List Tables" "Drop Table" "Insert into Table" "Select From Table" "Delete From Table" "Update Table"
 do
 
     case $REPLY in	
     1)
         #create_table
-        ./create_table.sh $1
+        ./Create_table.sh $dbname
         ;;
     2)
         #list_tables
         ;;
     3)
         #drop_table
+        ./drop_table.sh $dbname
         ;;
     4)
         #insert_into_table
