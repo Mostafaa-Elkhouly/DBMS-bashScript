@@ -9,14 +9,12 @@ do
 
     case $REPLY in	
     1)
-        #create_table
         ./Create_table.sh $dbname
         ;;
     2)
-        #list_tables
+        ls -F "./DB/$dbname" | grep -v /
         ;;
     3)
-        #drop_table
         ./drop_table.sh $dbname
         ;;
     4)
