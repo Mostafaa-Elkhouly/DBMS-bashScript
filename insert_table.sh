@@ -127,19 +127,6 @@ function insertIntoTable
             column=${column_names[$index]}
             read -p "$column : " val
 
-            # if [[ $column = ${pk[0]} ]]; then
-
-            #     checkForUniqueInPK $val ${pk[1]} $tableName
-
-            #     while [ $? -eq 1 ]
-            #     do
-            #         read -p "$column : " val
-
-            #         checkForUniqueInPK $val ${pk[1]} $tableName
-            #     done
-            
-            # fi
-
             if [[ ${column_types[$index]} = "int" ]]; then
 
                 if [[ $column = ${pk[0]} ]]; then
@@ -199,7 +186,9 @@ function insertIntoTable
         echo $record_values >> ./$tableName
 
         echo "Data Inserted Successfully..."
+    else 
+        echo "ERROR: Table" $tableName "Not Found!"
     fi
-
 }   
+
 insertIntoTable
