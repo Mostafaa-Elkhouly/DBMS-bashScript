@@ -1,8 +1,3 @@
 deptid(PK):int|deptname:string|deptaddress:string
-disha(PK):int|deptname:string|add:string
-1|555555|gggggggggggg\n
-5|gg|kkkkkkkk\n
-ddddddd|ffffffffff|bbbb
-1|2|3
-1
-1|ggg|lll
+1|Devops|cairo
+2|system admin|ismailia
