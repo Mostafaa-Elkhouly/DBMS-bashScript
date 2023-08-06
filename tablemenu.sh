@@ -21,7 +21,7 @@ do
         ./insert_table.sh $dbname
         ;;
     5)
-        #select_from_table
+        ./select_table.sh $dbname
         ;;
     6)
         #delete_from_table

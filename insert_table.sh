@@ -2,6 +2,7 @@
 
 dbname=$1
 cd "./DB/$dbname/"
+export PS3="$dbname> "
 
 function isInteger
 {   
@@ -109,7 +110,7 @@ function coltypes {
 
 function insertIntoTable
 {   
-    read -p "Enter Table Name--> " tableName
+    read -p "Enter Table Name: " tableName
   
     if [ -f $tableName ]; then
     
