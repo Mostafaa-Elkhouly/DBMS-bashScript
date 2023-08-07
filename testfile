@@ -1,6 +1,0 @@
-deptid(PK):int|deptname:string|deptaddress:string
-1|Devops|cairo
-2|system sasaaa|ismailia
-deptid(PK):int|deptname:string|deptaddress:string
-1|Devops|cairo
-2|system sasaaa|tanta
