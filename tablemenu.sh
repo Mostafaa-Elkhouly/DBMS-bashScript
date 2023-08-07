@@ -27,7 +27,7 @@ do
         #delete_from_table
         ;;
     7)
-        #update_table
+        ./update_table.sh $dbname
         ;;
     *)
         echo "Wrong Answer, Please Enter a Number From 1 to 7"
