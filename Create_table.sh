@@ -27,7 +27,7 @@ function promptForPK
             ;;
         2)  return 1
             ;;
-        *) echo -e "\033[31mERROR: Invalid Option\033[0m"    
+        *) echo -e "\e[31mERROR: Invalid Option\e[0m"    
         esac
         
     done
@@ -52,7 +52,7 @@ function createTable
   
     if [ -f $tableName ]
     then 
-        echo -e "\033[31mERROR: Table Name Already Exsits!\033[0m"
+        echo -e "\e[31mERROR: Table Name Already Exsits!\e[0m"
         return 1
     fi
 
@@ -107,7 +107,7 @@ function createTable
     then
         echo "Table $tableName was created successfully!"
     else
-        echo -e "\033[31mERROR: Creating Table\033[0m"
+        echo -e "\e[31mERROR: Creating Table\e[0m"
     fi
 }
 

@@ -113,11 +113,11 @@ function deleteFromTable
             do
                 if [ "$(isInteger "$val")" -eq 1 ]; then
 
-                    echo -e "\033[31mERROR: You must enter an integer number, please try again ...\033[0m"
+                    echo -e "\e[31mERROR: You must enter an integer number, please try again ...\e[0m"
 
                 elif [ -z "$check_if_pk_exist" ]; then
 
-                    echo -e "\033[31mERROR: PK not Found, Please Try Again ...\033[0m"
+                    echo -e "\e[31mERROR: PK not Found, Please Try Again ...\e[0m"
                 fi
                 read -r -p "Enter value of $column : " val
                 check_if_pk_exist=$(cut -d'|' -f ${pk[1]} ./$tableName | sed "1d" | grep -w "$val")
@@ -131,11 +131,11 @@ function deleteFromTable
             do
                 if [ "$(isValidString "$val")" -eq 1 ]; then
 
-                    echo -e "\033[31mERROR: You must enter an integer number, please try again ...\033[0m"
+                    echo -e "\e[31mERROR: You must enter an integer number, please try again ...\e[0m"
 
                 elif [ -z "$check_if_pk_exist" ]; then
 
-                    echo -e "\033[31mERROR: PK not Found, Please Try Again ...\033[0m"
+                    echo -e "\e[31mERROR: PK not Found, Please Try Again ...\e[0m"
                 fi                                   
                 read -r -p "Enter value of $column : " val
                 check_if_pk_exist=$(cut -d'|' -f ${pk[1]} ./$tableName | sed "1d" | grep -w "$val")
@@ -152,7 +152,7 @@ function deleteFromTable
 
     else
 
-        echo -e "\033[31mERROR: Table" $tableName "Not Found!\033[0m"
+        echo -e "\e[31mERROR: Table" $tableName "Not Found!\e[0m"
     fi
 }   
 

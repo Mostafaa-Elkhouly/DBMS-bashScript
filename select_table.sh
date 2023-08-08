@@ -54,12 +54,12 @@ function selectFromTable
                     done
                 fi
             else
-                echo -e "\033[31mERROR: Invalid selection\033[0m"
+                echo -e "\e[31mERROR: Invalid selection\e[0m"
             fi
         done 
 
     else 
-        echo -e "\033[31mERROR: Table" $tableName "Not Found!\033[0m"
+        echo -e "\e[31mERROR: Table" $tableName "Not Found!\e[0m"
     fi
 }   
 

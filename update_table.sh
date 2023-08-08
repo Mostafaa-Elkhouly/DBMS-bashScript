@@ -126,11 +126,11 @@ function updateTable
                                 do
                                     if [ "$(isInteger "$val")" -eq 1 ]; then
 
-                                        echo -e "\033[31mERROR: You must enter an integer number, please try again ...\033[0m"
+                                        echo -e "\e[31mERROR: You must enter an integer number, please try again ...\e[0m"
 
                                     elif [ -z "$check_if_pk_exist" ]; then
 
-                                        echo -e "\033[31mERROR: PK not Found, Please Try Again ...\033[0m"
+                                        echo -e "\e[31mERROR: PK not Found, Please Try Again ...\e[0m"
                                     fi
                                     read -r -p "Enter value of $column : " val
                                     check_if_pk_exist=$(cut -d'|' -f ${pk[1]} ./$tableName | sed "1d" | grep -w "$val")
@@ -139,7 +139,7 @@ function updateTable
                             else
                                 while [ "$(isInteger "$val")" -eq 1 ]
                                 do
-                                    echo -e "\033[31mERROR: You must enter an integer number, please try again ...\033[0m"
+                                    echo -e "\e[31mERROR: You must enter an integer number, please try again ...\e[0m"
                                     read -r -p "Enter value of $column : " val
                                 done
                             fi
@@ -153,11 +153,11 @@ function updateTable
                                 do
                                     if [ "$(isValidString "$val")" -eq 1 ]; then
 
-                                        echo -e "\033[31mERROR: You must enter an integer number, please try again ...\033[0m"
+                                        echo -e "\e[31mERROR: You must enter an integer number, please try again ...\e[0m"
 
                                     elif [ -z "$check_if_pk_exist" ]; then
 
-                                        echo -e "\033[31mERROR: PK not Found, Please Try Again ...\033[0m"
+                                        echo -e "\e[31mERROR: PK not Found, Please Try Again ...\e[0m"
                                     fi                                   
                                     read -r -p "Enter value of $column : " val
                                     check_if_pk_exist=$(cut -d'|' -f ${pk[1]} ./$tableName | sed "1d" | grep -w "$val")
@@ -166,7 +166,7 @@ function updateTable
                             else
                                 while [ "$(isValidString "$val")" -eq 1 ]
                                 do
-                                    echo -e "\033[31mERROR: You must enter a valid string, please try again ...\033[0m"
+                                    echo -e "\e[31mERROR: You must enter a valid string, please try again ...\e[0m"
                                     read -r -p "Enter value of $column : " val
                                 done
                             fi
@@ -197,7 +197,7 @@ function updateTable
 
                             while [[ -z "$check_if_pk_exist" ]]
                             do 
-                                echo -e "\033[31mERROR: PK not Found, Please Try Again ...\033[0m"
+                                echo -e "\e[31mERROR: PK not Found, Please Try Again ...\e[0m"
                                 read -r -p "Enter value of ${pk[0]}: " pkval
                                 check_if_pk_exist=$(cut -d'|' -f ${pk[1]} ./$tableName | sed "1d" | grep -w "$pkval")
                                 idval=$pkval
@@ -209,13 +209,13 @@ function updateTable
                                 
                                 while [ "$(isInteger "$colval")" -eq 1 ]
                                 do
-                                    echo -e "\033[31mERROR: You must enter an integer number, please try again ...\033[0m"
+                                    echo -e "\e[31mERROR: You must enter an integer number, please try again ...\e[0m"
                                     read -r -p "Enter value of $var : " colval
                                 done
                             else 
                                 while [ "$(isValidString "$colval")" -eq 1 ]
                                 do
-                                    echo -e "\033[31mERROR: You must enter a valid string, please try again ...\033[0m"
+                                    echo -e "\e[31mERROR: You must enter a valid string, please try again ...\e[0m"
                                     read -r -p "Enter value of $var : " colval
                                 done
                             fi
@@ -253,12 +253,12 @@ function updateTable
                     done
                 fi
             else
-                echo -e "\033[31mERROR: Invalid selection\033[0m"
+                echo -e "\e[31mERROR: Invalid selection\e[0m"
             fi
         done       
         
     else 
-        echo -e "\033[31mERROR: Table" $tableName "Not Found!\033[0m"
+        echo -e "\e[31mERROR: Table" $tableName "Not Found!\e[0m"
     fi
 }   
 

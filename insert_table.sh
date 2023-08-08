@@ -68,7 +68,7 @@ function checkForUniqueInPK {
     for value in ${columnvalues[@]}
     do
         if [[ $1 -eq $value ]]; then
-            echo -e "\033[31mERROR: You Must Enter a Unique Value For the PK Column\033[0m"
+            echo -e "\e[31mERROR: You Must Enter a Unique Value For the PK Column\e[0m"
             return 1
         fi
     done
@@ -139,7 +139,7 @@ function insertIntoTable
                     do
                         if [ "$(isInteger "$val")" -eq 1 ]; then
 
-                            echo -e "\033[31mERROR: You must enter an integer number, please try again!\033[0m"
+                            echo -e "\e[31mERROR: You must enter an integer number, please try again!\e[0m"
                         fi
                         read -r -p "$column : " val
                         checkForUniqueInPK $val ${pk[1]} $tableName
@@ -148,7 +148,7 @@ function insertIntoTable
                 else
                     while [ "$(isInteger "$val")" -eq 1 ]
                     do
-                        echo -e "\033[31mERROR: You must enter an integer number, please try again!\033[0m"
+                        echo -e "\e[31mERROR: You must enter an integer number, please try again!\e[0m"
                         read -r -p "$column : " val
                     done
                 fi
@@ -162,7 +162,7 @@ function insertIntoTable
                     do
                         if [ "$(isValidString "$val")" -eq 1 ]; then
 
-                            echo -e "\033[31mERROR: You must enter an integer number, please try again!\033[0m"
+                            echo -e "\e[31mERROR: You must enter an integer number, please try again!\e[0m"
                         fi
                         read -r -p "$column : " val
                         checkForUniqueInPK $val ${pk[1]} $tableName
@@ -171,7 +171,7 @@ function insertIntoTable
                 else
                     while [ "$(isValidString "$val")" -eq 1 ]
                     do
-                        echo -e "\033[31mERROR: You must enter a valid string, please try again!\033[0m"
+                        echo -e "\e[31mERROR: You must enter a valid string, please try again!\e[0m"
                         read -r -p "$column : " val
                     done
                 fi
@@ -188,7 +188,7 @@ function insertIntoTable
 
         echo "Data Inserted Successfully..."
     else 
-        echo -e "\033[31mERROR: Table" $tableName "Not Found!\033[0m"
+        echo -e "\e[31mERROR: Table" $tableName "Not Found!\e[0m"
     fi
 }   
 

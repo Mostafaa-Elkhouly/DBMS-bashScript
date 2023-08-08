@@ -3,18 +3,18 @@
 read -r -p "Enter DB Name: " name
 
 if [[ -e "./DB/$name" ]] ; then
-        echo -e "\033[31mERROR: DB Exist!\033[0m"
+        echo -e "\e[31mERROR: DB Exist!\e[0m"
 else
         pattern="^[^0-9\/><\?*\#'\@\$\%\^\&\(\)\.]+$"
 
         if [ -z $name ]; then
-                echo "Name should not be null."
+                echo "\e[31mERROR: Name should not be null.\e[0m"
         elif [[ $name =~ ^(\.|\.\.) ]]; then
-                echo "Name should not start with '.' or '..'."
+                echo "\e[31mERROR: should not start with '.' or '..'.\e[0m"
         elif [[ $name =~ ^[0-9] ]]; then
-                echo "Name should not start with a number."
+                echo "\e[31mERROR: Name should not start with a number.\e[0m"
         elif [[ ! $name =~ $pattern ]]; then
-                echo "Name contains invalid characters or spaces."
+                echo "\e[31mERROR: Name contains invalid characters or spaces.\e[0m"
         else
                 mkdir ./DB/$name 
         fi

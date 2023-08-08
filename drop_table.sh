@@ -18,11 +18,11 @@ then
 			;;
 
 		*) 
-			echo -e "\033[31mERROR: Invalid Option\033[0m"
+			echo -e "\e[31mERROR: Invalid Option\e[0m"
 			;;
 	esac
 else
-	echo -e "\033[31mERROR: $name Table Not Exist\033[0m"
+	echo -e "\e[31mERROR: $name Table Not Exist\e[0m"
 fi
 
 

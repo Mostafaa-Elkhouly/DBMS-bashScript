@@ -30,7 +30,7 @@ do
         ./update_table.sh $dbname
         ;;
     *)
-        echo -e "\033[31mERROR: Wrong Answer, Please Enter a Number From 1 to 7\033[0m"
+        echo -e "\e[31mERROR: Wrong Answer, Please Enter a Number From 1 to 7\e[0m"
         ;;
     esac
 done 

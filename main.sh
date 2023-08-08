@@ -26,7 +26,7 @@ do
         ./drop_db.sh
         ;;
     *)
-        echo -e "\033[31mERROR: Wrong Entering!, Please select from 1 to 5 ...\033[0m"
+        echo -e "\e[31mERROR: Wrong Entering!, Please select from 1 to 5 ...\e[0m"
         ;;
     esac
 done 

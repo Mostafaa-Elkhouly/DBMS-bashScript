@@ -8,5 +8,5 @@ if [[ -d "./DB/$name" && -e "./DB/$name" ]] ; then
     mv ./DB/$name ./DB/$new_name
 
 else
-    echo -e "\033[31mERROR: DB Not Found!\033[0m"                  
+    echo -e "\e[31mERROR: DB Not Found!\e[0m"                  
 fi
