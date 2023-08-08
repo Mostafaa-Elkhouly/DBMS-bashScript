@@ -24,13 +24,13 @@ do
         ./select_table.sh $dbname
         ;;
     6)
-        #delete_from_table
+        ./delete_from_table.sh $dbname
         ;;
     7)
         ./update_table.sh $dbname
         ;;
     *)
-        echo "Wrong Answer, Please Enter a Number From 1 to 7"
+        echo -e "\033[31mERROR: Wrong Answer, Please Enter a Number From 1 to 7\033[0m"
         ;;
     esac
 done 

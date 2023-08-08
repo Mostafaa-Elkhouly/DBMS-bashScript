@@ -27,7 +27,7 @@ function promptForPK
             ;;
         2)  return 1
             ;;
-        *) echo "Invalid Option"    
+        *) echo -e "\033[31mERROR: Invalid Option\033[0m"    
         esac
         
     done
@@ -48,19 +48,19 @@ function isValidString
 
 function createTable
 {   
-    read -p "Enter Table Name--> " tableName
+    read -r -p "Enter Table Name--> " tableName
   
     if [ -f $tableName ]
     then 
-        echo "Error! Table Name Already Exsits!"
+        echo -e "\033[31mERROR: Table Name Already Exsits!\033[0m"
         return 1
     fi
 
-    read -p "Enter Columns Number--> " columnsNumber
+    read -r -p "Enter Columns Number--> " columnsNumber
     
     while ! isInteger $columnsNumber
     do 
-        read -p "INVALID VALUE! `echo $'\n '` Enter Columns Number--> " columnsNumber        
+        read -r -p "INVALID VALUE! `echo $'\n '` Enter Columns Number--> " columnsNumber        
     done
 
 
@@ -71,7 +71,7 @@ function createTable
     do
         currCol=$(( counter+1 ))
         
-        read -p "Enter Column [$currCol] Name--> " colName
+        read -r -p "Enter Column [$currCol] Name--> " colName
         echo "Choose The Column [$currCol] Type: "
         select type in "int" "string"
         do
@@ -107,7 +107,7 @@ function createTable
     then
         echo "Table $tableName was created successfully!"
     else
-        echo ERROR Creating Table
+        echo -e "\033[31mERROR: Creating Table\033[0m"
     fi
 }
 

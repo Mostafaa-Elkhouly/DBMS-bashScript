@@ -3,7 +3,7 @@
 read -r -p "Enter DB Name: " name
 
 if [[ -e "./DB/$name" ]] ; then
-        echo ERROR: DB Exist!
+        echo -e "\033[31mERROR: DB Exist!\033[0m"
 else
         pattern="^[^0-9\/><\?*\#'\@\$\%\^\&\(\)\.]+$"
 

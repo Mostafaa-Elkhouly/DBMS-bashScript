@@ -3,10 +3,10 @@
 dbname=$1
 cd "./DB/$dbname/"
 
-read -p "Enter Table Name To Be Deleted: " tablename
+read -r -p "Enter Table Name To Be Deleted: " tablename
 if [ -f $tablename ]
 then 
-	read -p "Are You Sure You Want To Delete $tablename Table ? (Y/N) : " choice
+	read -r -p "Are You Sure You Want To Delete $tablename Table ? (Y/N) : " choice
 	case $choice in
 		[yY]*) 
 			rm $tablename 
@@ -18,11 +18,11 @@ then
 			;;
 
 		*) 
-			echo "Invalid Option"
+			echo -e "\033[31mERROR: Invalid Option\033[0m"
 			;;
 	esac
 else
-	echo "$name Table Not Exist"
+	echo -e "\033[31mERROR: $name Table Not Exist\033[0m"
 fi
 
 

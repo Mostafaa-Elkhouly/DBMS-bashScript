@@ -23,7 +23,7 @@ function colnames {
 
 function selectFromTable
 {   
-    read -p "Enter Table Name: " tableName
+    read -r -p "Enter Table Name: " tableName
   
     if [ -f $tableName ]; then
             
@@ -54,12 +54,12 @@ function selectFromTable
                     done
                 fi
             else
-                echo "Invalid selection"
+                echo -e "\033[31mERROR: Invalid selection\033[0m"
             fi
         done 
 
     else 
-        echo "ERROR: Table" $tableName "Not Found!"
+        echo -e "\033[31mERROR: Table" $tableName "Not Found!\033[0m"
     fi
 }   
 
