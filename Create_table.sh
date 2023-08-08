@@ -78,7 +78,7 @@ function createTable
             case $REPLY in 
                 1|2) colType=$type
                     break ;;
-                *) echo "Invalid Option"
+                *) echo -e "\e[31mERROR: Invalid Option\e[0m"
             esac
         done 
         
