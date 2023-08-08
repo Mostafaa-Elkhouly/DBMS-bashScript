@@ -1,3 +1,4 @@
 deptid(PK):int|deptname:string|deptaddress:string
 1|Devops|cairo
 2|system admin|ismailia
+3|OS|alex

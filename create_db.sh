@@ -1,11 +1,11 @@
 #! /usr/bin/bash
 
-read -p "Enter DB Name: " name
+read -r -p "Enter DB Name: " name
 
 if [[ -e "./DB/$name" ]] ; then
         echo ERROR: DB Exist!
 else
-        pattern="^[^0-9\s\/><\?*\#'\@\$\%\^\&\(\)\.]+$"
+        pattern="^[^0-9\/><\?*\#'\@\$\%\^\&\(\)\.]+$"
 
         if [ -z $name ]; then
                 echo "Name should not be null."
