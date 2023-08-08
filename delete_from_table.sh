@@ -119,7 +119,7 @@ function deleteFromTable
 
                     echo "ERROR: PK not Found, Please Try Again ..."
                 fi
-                read -p "Enter value of $column : " val
+                read -r -p "Enter value of $column : " val
                 check_if_pk_exist=$(cut -d'|' -f ${pk[1]} ./$tableName | sed "1d" | grep -w "$val")
                 idval=$val
             done
@@ -137,7 +137,7 @@ function deleteFromTable
 
                     echo "ERROR: PK not Found, Please Try Again ..."
                 fi                                   
-                read -p "Enter value of $column : " val
+                read -r -p "Enter value of $column : " val
                 check_if_pk_exist=$(cut -d'|' -f ${pk[1]} ./$tableName | sed "1d" | grep -w "$val")
                 idval=$val
             done
