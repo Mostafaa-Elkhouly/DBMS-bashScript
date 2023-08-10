@@ -3,7 +3,7 @@
 while true; do
     read -r -p "Enter DB Name: " name
 
-    rgx="^[A-Za-z_][A-Za-z0-9_]+$"
+    rgx="^[A-Za-z_][A-Za-z0-9_]+*$"
 
     if [[ $name =~ $rgx ]]; then
         if [[ -e "./DB/$name" ]]; then
