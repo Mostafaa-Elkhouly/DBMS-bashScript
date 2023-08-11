@@ -1,91 +1,10 @@
 #! /usr/bin/bash
+source ./shared.sh
 
 dbname=$1
 cd "./DB/$dbname/"
 export PS3="$dbname> "
 
-function isInteger {   
-    intPattern="^[0-9]+$"
-    if [[ $1 =~ $intPattern ]]; then
-        echo 0
-    else 
-        echo 1
-    fi
-}
-
-function isValidString {
-    if [[ $1 =~ ^[a-zA-Z0-9]+$ ]]
-    then
-        echo 0
-    else
-        echo 1
-    fi
-}
-
-function getPK {
-    pk=(
-        $( 
-            awk '
-            BEGIN{FS="|"}
-            {
-                if(NR == 1)
-                {
-                    i=1
-                    while(i<=NF){ 
-                        split($i, column, ":")
-                        column_name = column[1]
-                        column_type = column[2]
-
-                        if ( column_name ~ /(PK)/ )
-                        {
-                            print column_name
-                            print i 
-                            break
-                        }
-                        i++
-                    }
-                }
-            }
-            ' ./$1
-        )
-    )
-    
-    echo ${pk[@]}
-}
-
-function colnames {
-
-    column_names=(
-    $(
-        awk -F "|" '
-        {
-            if(NR == 1){
-                for (i = 1; i <= NF; i++) {
-                    split($i, parts, ":")
-                    print parts[1]
-                }
-            }
-        }' ./$1))
-    
-    echo ${column_names[@]}
-}
-
-function coltypes {
-
-    column_types=(
-    $(
-        awk -F "|" '
-        {
-            if(NR == 1){
-                for (i = 1; i <= NF; i++) {
-                    split($i, parts, ":")
-                    print parts[2]
-                }
-            }
-        }' ./$1))
-    
-    echo ${column_types[@]}
-}
 
 function deleteFromTable
 {   
@@ -99,7 +18,7 @@ function deleteFromTable
 
         column_types=($(coltypes $tableName))        
 
-        echo "**Delete Row By PK**"
+        echo "** Delete Record By PK **"
         
         read -r -p "Enter value of ${pk[0]} : " val
         pk_index=${pk[1]}
