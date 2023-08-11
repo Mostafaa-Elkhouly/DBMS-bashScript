@@ -4,7 +4,7 @@ mkdir -p ./DB
 #cd ./DB/
 
 echo Hello SQL 
-export PS3="SQLProj>>> "
+export PS3="SQL-DBMS>>> "
 
 select var in "List DBs" "Connect DB" "Create DB" "Rename DB" "Drop DB"
 do

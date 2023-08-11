@@ -2,6 +2,7 @@
 
 dbname=$1
 cd "./DB/$dbname/"
+export PS3="$dbname:dropTable> "
 
 read -r -p "Enter Table Name To Be Deleted: " tablename
 if [ -f $tablename ]

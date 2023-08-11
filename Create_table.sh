@@ -3,6 +3,7 @@ source ./shared.sh
 
 dbname=$1
 cd "./DB/$dbname/"
+export PS3="$dbname:createTable> "
 
 
 function promptForPK

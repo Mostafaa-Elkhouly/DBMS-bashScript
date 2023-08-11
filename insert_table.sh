@@ -3,7 +3,7 @@ source ./shared.sh
 
 dbname=$1
 cd "./DB/$dbname/"
-export PS3="$dbname> "
+export PS3="$dbname:insertIntoTable> "
 
 
 function insertIntoTable
