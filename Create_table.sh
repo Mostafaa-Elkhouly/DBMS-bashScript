@@ -1,18 +1,9 @@
 #!/usr/bin/bash
+source ./shared.sh
 
 dbname=$1
 cd "./DB/$dbname/"
 
-function isInteger
-{
-    intPattern="^[0-9]+*$"
-    if [[ $1 =~ $intPattern ]]
-    then
-        return 0
-    else
-        return 1
-    fi
-}
 
 function promptForPK
 {
@@ -29,33 +20,24 @@ function promptForPK
     done
 }
 
-function isValidString
-{
-    rgx="^[A-Za-z_][A-Za-z0-9_]+*$"
-    if [[ $1 =~ $rgx ]]
-    then
-        return 0
-    else
-        return 1
-    fi
-}
 
 function createTable
 {
     while true; do
-        read -r -p "Enter Table Name--> " tableName
+        read -r -p "Enter Table Name: " tableName
 
         if [ -f "$tableName" ]; then
             echo -e "\e[31mERROR: Table Name Already Exists!\e[0m"
             continue
-        elif ! isValidString "$tableName"; then
+        
+        elif [[ "$(isValidString "$tableName")" -eq 1 ]]; then 
             echo -e "\e[31mERROR: Invalid Table Name!\e[0m"
             continue
         fi
 
         read -r -p "Enter Columns Number--> " columnsNumber
-
-        while ! isInteger "$columnsNumber"; do
+        
+        while [[ "$(isInteger "$columnsNumber")" -eq 1 ]]; do
             read -r -p "INVALID VALUE! `echo $'\n '` Enter Columns Number--> " columnsNumber
         done
 
@@ -67,7 +49,8 @@ function createTable
             currCol=$(( counter+1 ))
 
             read -r -p "Enter Column [$currCol] Name--> " colName
-            if ! isValidString "$colName"; then
+            
+            if  [[ "$(isValidString "$colName")" -eq 1 ]]; then
                 echo -e "\e[31mERROR: Invalid Column Name!\e[0m"
                 continue
             fi

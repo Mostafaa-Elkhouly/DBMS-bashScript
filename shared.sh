@@ -96,8 +96,9 @@ function isInteger {
 }
 
 function isValidString {
-    if [[ $1 =~ ^[a-zA-Z0-9]+$ ]]
-    then
+    
+    rgx="^[A-Za-z_][A-Za-z0-9_]+*$"
+    if [[ $1 =~ $rgx ]]; then
         echo 0
     else
         echo 1
