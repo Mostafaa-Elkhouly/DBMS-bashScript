@@ -95,7 +95,6 @@ function isInteger {
     fi
 }
 
-#accept spaces
 function isValidString {
     if [[ $1 =~ ^[a-zA-Z0-9]+$ ]]
     then
