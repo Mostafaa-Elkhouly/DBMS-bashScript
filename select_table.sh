@@ -4,6 +4,39 @@ dbname=$1
 cd "./DB/$dbname/"
 export PS3="$dbname> "
 
+
+function getPK {
+    pk=(
+        $( 
+            awk '
+            BEGIN{FS="|"}
+            {
+                if(NR == 1)
+                {
+                    i=1
+                    while(i<=NF){ 
+                        split($i, column, ":")
+                        column_name = column[1]
+                        column_type = column[2]
+
+                        if ( column_name ~ /(PK)/ )
+                        {
+                            print column_name
+                            print i 
+                            break
+                        }
+                        i++
+                    }
+                }
+            }
+            ' ./$1
+        )
+    )
+    
+    echo ${pk[@]}
+}
+
+
 function colnames {
 
     column_names=(
@@ -29,11 +62,25 @@ function selectFromTable
             
         column_names=($(colnames $tableName))        
 
-        echo "**Select a Specific Column Data -OR- Select All Columns Data **"
-        select var in ${column_names[@]} "select all"
+        echo "** Select a Specific Column -OR- Select Record by PK -OR- Select All Columns **"
+        select var in ${column_names[@]} "select record by PK" "select all"
         do
             if [ -n "$var" ]; then
-                if [[ $var = "select all" ]]; then
+                if [[ $var = "select record by PK" ]]; then
+                    pk=($(getPK $tableName))
+                    
+                    read -r -p "Enter the value of ${pk[0]} : " idval
+
+                    line_number=$(cut -d '|' -f ${pk[1]} ./$tableName | grep -n -w "$idval" | cut -d ':' -f 1)
+                    
+                    if [[ -n $line_number ]]; then
+                        record_to_select=$(sed -n "${line_number}p" ./$tableName)
+                        echo $record_to_select
+                    else
+                        echo -e "\e[31mERROR: Invalid PK Value\e[0m"
+                    fi
+
+                elif [[ $var = "select all" ]]; then
                     allData=$(sed -n '1!p' ./$tableName)
                     echo "$allData"
                 else
