@@ -95,8 +95,19 @@ function isInteger {
     fi
 }
 
+#accept spaces
 function isValidString {
-    
+    if [[ $1 =~ ^[a-zA-Z0-9]+$ ]]
+    then
+        echo 0
+    else
+        echo 1
+    fi
+}
+
+#not accepting spaces
+function is_Valid_String {
+
     rgx="^[A-Za-z_][A-Za-z0-9_]+*$"
     if [[ $1 =~ $rgx ]]; then
         echo 0

@@ -3,3 +3,4 @@ deptid(PK):int|deptname:string|deptaddress:string
 2|system admin|ismailia
 3|OS|alex
 4|cloud|sohag
+5|tech|cairo_smart_village

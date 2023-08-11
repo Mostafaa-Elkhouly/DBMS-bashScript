@@ -31,7 +31,7 @@ function createTable
             echo -e "\e[31mERROR: Table Name Already Exists!\e[0m"
             continue
         
-        elif [[ "$(isValidString "$tableName")" -eq 1 ]]; then 
+        elif [[ "$(is_Valid_String "$tableName")" -eq 1 ]]; then 
             echo -e "\e[31mERROR: Invalid Table Name!\e[0m"
             continue
         fi
@@ -51,7 +51,7 @@ function createTable
 
             read -r -p "Enter Column [$currCol] Name--> " colName
             
-            if  [[ "$(isValidString "$colName")" -eq 1 ]]; then
+            if  [[ "$(is_Valid_String "$colName")" -eq 1 ]]; then
                 echo -e "\e[31mERROR: Invalid Column Name!\e[0m"
                 continue
             fi
