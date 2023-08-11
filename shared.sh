@@ -104,7 +104,9 @@ function isValidString {
     fi
 }
 
-#not accepting spaces
+#string should start with an uppercase or lowercase letter (a-z, A-Z)
+# or an underscore (_).
+
 function is_Valid_String {
 
     rgx="^[A-Za-z_][A-Za-z0-9_]+*$"
