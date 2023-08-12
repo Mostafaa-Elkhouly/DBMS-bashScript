@@ -95,8 +95,9 @@ function isInteger {
     fi
 }
 
+#string accept spaces
 function isValidString {
-    if [[ $1 =~ ^[a-zA-Z0-9]+$ ]]
+    if [[ $1 =~ ^[a-zA-Z0-9[:space:]]+$ ]]
     then
         echo 0
     else

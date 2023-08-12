@@ -5,4 +5,4 @@ deptid(PK):int|deptname:string|deptaddress:string
 4|cloud|sohag
 5|tech|cairo_smart_village
 6|mydept|tanta
-7|newdept|ddc
+8|Cyber Security|Smart Village
