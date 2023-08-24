@@ -5,17 +5,17 @@ cd "./DB/$dbname/"
 export PS3="$dbname:dropTable> "
 
 read -r -p "Enter Table Name To Be Deleted: " tablename
-if [ -f $tablename ]
+if [[ -n "$tablename" && -f $tablename ]]
 then 
 	read -r -p "Are You Sure You Want To Delete $tablename Table ? (Y/N) : " choice
 	case $choice in
 		[yY]*) 
 			rm $tablename 
-			echo "Table Deleted Successfully" 
+			echo -e "\e[32mTable Deleted Successfully\e[0m"
 			;;
 
 		[nN]*) 
-			echo "Canceled"
+			echo -e "\e[32mCanceled\e[0m"
 			;;
 
 		*) 
@@ -23,7 +23,7 @@ then
 			;;
 	esac
 else
-	echo -e "\e[31mERROR: $name Table Not Exist\e[0m"
+	echo -e "\e[31mERROR:Table $tablename Not Exist\e[0m"
 fi
 
 

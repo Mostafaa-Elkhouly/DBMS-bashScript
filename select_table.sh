@@ -10,10 +10,10 @@ function selectFromTable
 {   
     read -r -p "Enter Table Name: " tableName
   
-    if [ -f $tableName ]; then
+    if [[ -n "$tableName" && -f $tableName ]]; then
             
         column_names=($(colnames $tableName))        
-
+        clear
         echo "** Select a Specific Column -OR- Select Record by PK -OR- Select All Columns **"
         select var in ${column_names[@]} "select record by PK" "select all"
         do

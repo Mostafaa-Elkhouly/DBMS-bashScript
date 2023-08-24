@@ -21,9 +21,8 @@ function deleteFromTable
         echo "** Delete Record By PK **"
         
         read -r -p "Enter value of ${pk[0]} : " val
-        pk_index=${pk[1]}
 
-        check_if_pk_exist=$(cut -d'|' -f ${pk[1]} ./$tableName | sed "1d" | grep -w "$val")
+        check_if_pk_exist=$(cut -d '|' -f ${pk[1]} ./$tableName | sed "1d" | grep -w "$val")
         idval=$val
 
         while [[ -z "$check_if_pk_exist" ]]

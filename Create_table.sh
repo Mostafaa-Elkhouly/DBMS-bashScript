@@ -36,10 +36,11 @@ function createTable
             continue
         fi
 
-        read -r -p "Enter Columns Number--> " columnsNumber
+        read -r -p "Enter Columns Number --> " columnsNumber
         
         while [[ "$(isInteger "$columnsNumber")" -eq 1 ]]; do
-            read -r -p "INVALID VALUE! `echo $'\n '` Enter Columns Number--> " columnsNumber
+            echo -e "\e[31mERROR: INVALID VALUE!\e[0m"
+            read -r -p "Enter Columns Number --> " columnsNumber
         done
 
         typeset -i counter=0

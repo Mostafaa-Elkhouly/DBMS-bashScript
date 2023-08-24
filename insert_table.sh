@@ -10,7 +10,7 @@ function insertIntoTable
 {   
     read -r -p "Enter Table Name: " tableName
   
-    if [ -f $tableName ]; then
+    if [[ -n "$tableName" && -f $tableName ]]; then
     
         pk=($(getPK $tableName))
         

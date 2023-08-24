@@ -4,7 +4,7 @@ source ./shared.sh
 while true; do
     read -r -p "Enter DB Name: " name
 
-    if [[ -d "./DB/$name" && -e "./DB/$name" ]]; then
+    if [[ -n "$name" && -d "./DB/$name" && -e "./DB/$name" ]]; then
         while true; do
             read -r -p "Enter DB New Name: " new_name
             
